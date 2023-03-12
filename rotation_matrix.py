@@ -2,13 +2,13 @@ import numpy as np
 
 # 定义旋转矩阵
 def rotation_matrix(theta, phi):
-    Rz = np.array([[np.cos(theta), -np.sin(theta), 0],
-                   [np.sin(theta), np.cos(theta), 0],
-                   [0, 0, 1]])
+    Rx = np.array([[1, 0, 0],
+                   [0, np.cos(theta), -np.sin(theta)],
+                   [0, np.sin(theta), np.cos(theta)]])
     Ry = np.array([[np.cos(phi), 0, np.sin(phi)],
                    [0, 1, 0],
                    [-np.sin(phi), 0, np.cos(phi)]])
-    return np.dot(Rz, Ry)
+    return np.dot(Ry, Rx)
 
 # 定义向量T在平面局部坐标系中的表示
 Tp = np.array([0, 0, 1])
