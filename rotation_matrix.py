@@ -11,7 +11,7 @@ def rotation_matrix(theta, phi):
     return np.dot(Rz, Ry)
 
 # 定义向量T在平面局部坐标系中的表示
-Tp = np.array([0, 0, L])
+Tp = np.array([0, 0, 1])
 
 # 定义平面法向量
 N0 = np.array([0, 0, 1])
@@ -26,7 +26,7 @@ R = rotation_matrix(theta, phi)
 # 计算向量T在world frame中的表示
 Tw = Tp + np.dot(Tp.dot(R), N0) * np.dot(R, N0)
 
-# 计算向量T在z轴方向上的分量
-Tz = Tw.dot(np.array([0, 0, 1]))
+# 已知向量T在z轴方向上的分量Tz，反向计算向量长度L
+L = Tz / Tw.dot(np.array([0, 0, 1]))
 
-print("向量T在垂直方向上的分量为：", Tz)
+print("向量的长度为：", L)
